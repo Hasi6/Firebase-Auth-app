@@ -39,4 +39,9 @@ export class AppComponent implements OnInit{
     this.afAuth.auth.signInWithRedirect(new auth.FacebookAuthProvider())
     .then((userCredentials) => console.log(userCredentials));
   }
+
+  githubSignInViaPopup() {
+    this.afAuth.auth.signInWithPopup(new auth.GithubAuthProvider())
+    .then((userCredentials) => console.log(userCredentials));
+  }
 }
