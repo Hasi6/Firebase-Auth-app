@@ -12,6 +12,9 @@ export class AppComponent implements OnInit{
 
   title = 'firebase-angula-auth-app';
 
+  email: string;
+  password: string;
+
   constructor( public afAuth: AngularFireAuth){}
 
   ngOnInit(){
@@ -54,6 +57,12 @@ export class AppComponent implements OnInit{
     this.afAuth.auth.signInAnonymously()
     .then((userCredentials) => console.log(userCredentials));
   }
+
+  signUp(){
+    this.afAuth.auth.createUserWithEmailAndPassword(this.email, this.password)
+    .then((userCredentials) => console.log(userCredentials));
+  }
+
 
   logOut(){
     this.afAuth.auth.signOut();
