@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase';
@@ -8,14 +8,25 @@ import { auth } from 'firebase';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
 
   title = 'firebase-angula-auth-app';
 
   constructor( private afAuth: AngularFireAuth){}
 
+  ngOnInit(){
+    this.afAuth.authState.subscribe((user) => {
+      console.log(user);
+    })
+  }
+
   googleSignInViaPopup() {
     this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
+    .then((userCredentials) => console.log(userCredentials));
+  }
+
+  googleSignInViaRedirect(){
+    this.afAuth.auth.signInWithRedirect(new auth.GoogleAuthProvider())
     .then((userCredentials) => console.log(userCredentials));
   }
 }
