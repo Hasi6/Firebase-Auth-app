@@ -12,7 +12,7 @@ export class AppComponent implements OnInit{
 
   title = 'firebase-angula-auth-app';
 
-  constructor( private afAuth: AngularFireAuth){}
+  constructor( public afAuth: AngularFireAuth){}
 
   ngOnInit(){
     this.afAuth.authState.subscribe((user) => {
@@ -43,5 +43,19 @@ export class AppComponent implements OnInit{
   githubSignInViaPopup() {
     this.afAuth.auth.signInWithPopup(new auth.GithubAuthProvider())
     .then((userCredentials) => console.log(userCredentials));
+  }
+
+  githunSignInViaRedirect(){
+    this.afAuth.auth.signInWithRedirect(new auth.GithubAuthProvider())
+    .then((userCredentials) => console.log(userCredentials));
+  }
+
+  anonymousSignIn(){
+    this.afAuth.auth.signInAnonymously()
+    .then((userCredentials) => console.log(userCredentials));
+  }
+
+  logOut(){
+    this.afAuth.auth.signOut();
   }
 }
