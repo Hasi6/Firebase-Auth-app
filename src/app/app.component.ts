@@ -29,4 +29,11 @@ export class AppComponent implements OnInit{
     this.afAuth.auth.signInWithRedirect(new auth.GoogleAuthProvider())
     .then((userCredentials) => console.log(userCredentials));
   }
+
+  facebookSignInViaPopup() {
+    this.afAuth.auth.signInWithPopup(new auth.FacebookAuthProvider())
+    .then((userCredentials) => console.log(userCredentials));
+  }
+
+
 }
