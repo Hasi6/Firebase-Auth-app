@@ -35,5 +35,8 @@ export class AppComponent implements OnInit{
     .then((userCredentials) => console.log(userCredentials));
   }
 
-
+  facebookSignInViaRedirect(){
+    this.afAuth.auth.signInWithRedirect(new auth.FacebookAuthProvider())
+    .then((userCredentials) => console.log(userCredentials));
+  }
 }
