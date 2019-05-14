@@ -14,6 +14,7 @@ export class AppComponent implements OnInit{
 
   email: string;
   password: string;
+  signInMode: boolean = false;
 
   constructor( public afAuth: AngularFireAuth){}
 
@@ -63,6 +64,19 @@ export class AppComponent implements OnInit{
     .then((userCredentials) => console.log(userCredentials));
   }
 
+  signIn(){
+    this.afAuth.auth.signInWithEmailAndPassword(this.email, this.password)
+    .then((userCredentials) => console.log(userCredentials));
+  }
+
+  signInOrSignUp(){
+    this.signInMode ? this.afAuth.auth.signInWithEmailAndPassword(this.email, this.password) :
+    this.afAuth.auth.createUserWithEmailAndPassword(this.email, this.password)
+  }
+
+  toggleSignInMode(){
+    this.signInMode = !this.signInMode;
+  }
 
   logOut(){
     this.afAuth.auth.signOut();
