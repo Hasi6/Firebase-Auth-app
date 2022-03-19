@@ -23,17 +23,10 @@ pipeline {
 
 agent any
 
-  environment {
-    PATH = "/home/jenkins/.nvm/versions/node/v14.17.4/bin:${env.PATH}"
-  }
-
   stages {
     stage('Test npm') {
       steps {
-        sh """
-          echo $PATH
-          npm --version
-        """
+        sh "docker build -t test:123 ."
       }
     }
   }
