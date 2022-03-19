@@ -1,20 +1,34 @@
-pipeline {
-  agent any
+// pipeline {
+//   agent any
+//   stages {
+//     stage("install") {
+//       steps {
+//         sh 'npm install'
+//       }
+//     }
+//     stage("build") {
+//       steps {
+//         sh 'npm run build'
+//       }
+//     }
+//     stage("test") {
+//       steps {
+//         sh 'npm run test'
+//       }
+//     }
+//   }
+// }
+environment {
+    PATH = "/home/jenkins/.nvm/versions/node/v14.17.4/bin:${env.PATH}"
+  }
+
   stages {
-    stage("install") {
+    stage('Test npm') {
       steps {
-        sh 'npm install'
-      }
-    }
-    stage("build") {
-      steps {
-        sh 'npm run build'
-      }
-    }
-    stage("test") {
-      steps {
-        sh 'npm run test'
+        sh """
+          echo $PATH
+          npm --version
+        """
       }
     }
   }
-}
