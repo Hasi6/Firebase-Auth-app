@@ -18,7 +18,12 @@
 //     }
 //   }
 // }
-environment {
+
+pipeline {
+
+agent any
+
+  environment {
     PATH = "/home/jenkins/.nvm/versions/node/v14.17.4/bin:${env.PATH}"
   }
 
@@ -32,3 +37,4 @@ environment {
       }
     }
   }
+}
