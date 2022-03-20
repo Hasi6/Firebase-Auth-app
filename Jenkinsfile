@@ -17,6 +17,7 @@ options {
         //  nodejs('node14') {
         //    sh 'yarn'
         //  }
+        sh 'rm -rf Firebase-Auth-app'
         echo 'Cloning'
         sh 'git clone https://github.com/Hasi6/Firebase-Auth-app.git'
         echo 'Clone Success'
