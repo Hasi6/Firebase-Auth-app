@@ -4,9 +4,9 @@ pipeline {
     stage("install") {
       steps {
          echo 'Installing'
-         nodejs('node14') {
-           sh 'yarn'
-         }
+        //  nodejs('node14') {
+        //    sh 'yarn'
+        //  }
       }
     }
     stage("build") {
