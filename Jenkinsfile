@@ -29,10 +29,10 @@ options {
     stage("build") {
       steps {
          echo 'Building'
-
+          sh "git config user.email='hasitha.chandula@gmail.com'"
+          sh "git config user.username='hasi6'"
         script {
-                   sh "git config user.email='hasitha.chandula@gmail.com'"
-                   sh "git config user.username='hasi6'"
+
                    writeFile(file: './Firebase-Auth-app/README.md', text: 'ADO')
                    sh 'cd Firebase-Auth-app && git add .'
                    sh "git commit -m 'updated from jenkins'"
