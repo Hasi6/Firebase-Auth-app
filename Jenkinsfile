@@ -22,7 +22,7 @@ options {
         sh 'git clone https://github.com/Hasi6/Firebase-Auth-app.git'
         sh 'cd Firebase-Auth-app'
         echo 'Clone Success'
-        echo 'checkout to testing'
+        echo 'cd Firebase-Auth-app && checkout to testing'
         sh 'git checkout test'
       }
     }
