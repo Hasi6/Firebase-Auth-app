@@ -29,9 +29,7 @@ options {
     stage("build") {
       steps {
          echo 'Building'
-          sh "git config user.email='hasitha.chandula@gmail.com'"
-          sh "git config user.username='hasi6'"
-        script {
+          script {
 
                    writeFile(file: './Firebase-Auth-app/README.md', text: 'ADO')
                    sh 'cd Firebase-Auth-app && git add .'
