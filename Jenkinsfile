@@ -33,6 +33,10 @@ options {
         script {
                    def data = readFile(file: './Firebase-Auth-app/README.md')
                    println(data)
+                   writeFile(file: './Firebase-Auth-app/README.md', text: 'ADO')
+                   sh 'git add .'
+                   sh "git commit -m 'updated from jenkins'"
+                   sh 'git push'
                }
 
 
