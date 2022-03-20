@@ -31,12 +31,10 @@ options {
          echo 'Building'
 
         script {
-                   def data = readFile(file: './Firebase-Auth-app/README.md')
-                   println(data)
-                   writeFile(file: './Firebase-Auth-app/README.md', text: 'ADO')
-                   sh 'cd Firebase-Auth-app && git add .'
                    sh "git config user.email='hasitha.chandula@gmail.com'"
                    sh "git config user.username='hasi6'"
+                   writeFile(file: './Firebase-Auth-app/README.md', text: 'ADO')
+                   sh 'cd Firebase-Auth-app && git add .'
                    sh "git commit -m 'updated from jenkins'"
                    sh 'git push'
                }
