@@ -17,6 +17,8 @@ options {
         //  nodejs('node14') {
         //    sh 'yarn'
         //  }
+
+        sh 'git clone https://github.com/Hasi6/Firebase-Auth-app.git'
       }
     }
     stage("build") {
