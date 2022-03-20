@@ -36,6 +36,8 @@ options {
                    writeFile(file: './Firebase-Auth-app/README.md', text: 'ADO')
                    sh 'git add .'
                    sh "git commit -m 'updated from jenkins'"
+                   sh "git config --global user.email='hasitha.chandula@gmail.com'"
+                   sh "git config --global user.username='hasi6'"
                    sh 'git push'
                }
 
