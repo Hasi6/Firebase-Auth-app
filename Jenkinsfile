@@ -20,6 +20,7 @@ options {
         sh 'rm -rf Firebase-Auth-app'
         echo 'Cloning'
         sh 'git clone https://github.com/Hasi6/Firebase-Auth-app.git'
+        sh 'cd Firebase-Auth-app'
         echo 'Clone Success'
         echo 'checkout to testing'
         sh 'git checkout test'
