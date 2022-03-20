@@ -23,12 +23,19 @@ options {
         sh 'cd Firebase-Auth-app'
         echo 'Clone Success'
         echo 'cd Firebase-Auth-app && checkout to testing'
-        sh 'git checkout test'
+        // sh 'git checkout test'
       }
     }
     stage("build") {
       steps {
          echo 'Building'
+
+        script {
+                   def data = readFile(file: './Firebase-Auth-app/README.md')
+                   println(data)
+               }
+
+
       }
     }
     stage("test") {
