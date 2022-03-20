@@ -13,7 +13,13 @@ pipeline {
     }
     stage("test") {
       steps {
-         echo 'Testing'
+         script {
+                    if (1==1) {
+                        echo 'I only execute on the master branch'
+                    } else {
+                        echo 'I execute elsewhere'
+                    }
+                }
       }
     }
   }
