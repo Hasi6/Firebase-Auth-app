@@ -43,8 +43,6 @@ options {
     stage("test") {
 
       steps {
-        def data = readFile(file: './Firebase-Auth-app/README.md')
-      println(data)
          script {
                     if (1==2) {
                         echo 'I only execute on the master branch'
