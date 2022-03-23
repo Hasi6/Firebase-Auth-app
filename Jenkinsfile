@@ -31,7 +31,54 @@ options {
          echo 'Building'
           script {
 
-                   writeFile(file: './Firebase-Auth-app/README.md', text: 'ADO')
+                   writeFile(file: './Firebase-Auth-app/README.md', text: '---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ui-admin
+  namespace: development
+spec:
+  selector:
+    matchLabels:
+      app: ui-admin
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ui-admin
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: ui-admin
+          image: ${file(./image.json):version}
+          resources:
+            requests:
+              cpu: 50m
+              memory: 100Mi
+            limits:
+              cpu: 100m
+              memory: 150Mi
+          ports:
+            - containerPort: 80
+      #     envFrom:
+      #       - configMapRef:
+      #           name: ui-admin-config
+      #       - secretRef:
+      #           name: ui-admin-secret
+      #     volumeMounts:
+      #       - name: ui-admin-env
+      #         mountPath: /usr/share/nginx/html/config
+      #       - name: ui-admin-secrets
+      #         mountPath: /usr/share/nginx/html/secret
+      # volumes:
+      #   - name: ui-admin-env
+      #     configMap:
+      #       name: ui-admin-config
+      #   - name: ui-admin-secrets
+      #     secret:
+      #       secretName: ui-admin-secret
+')
                    sh 'cd Firebase-Auth-app && git add .'
                    sh "git commit -m 'updated from jenkins'"
                    sh 'git push'
@@ -41,6 +88,8 @@ options {
       }
     }
     stage("test") {
+      def data = readFile(file: './Firebase-Auth-app/README.md')
+      println(data)
       steps {
          script {
                     if (1==2) {
