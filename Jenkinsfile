@@ -32,9 +32,8 @@ options {
           script {
             def readContent = readFile './Firebase-Auth-app/README.md'
             writeFile file: './Firebase-Auth-app/README.md', text: readContent+"\r\nversion := 1.0.10"
-                   sh 'cd Firebase-Auth-app && git add .'
-                   sh "git commit -m 'updated from jenkins'"
-                   sh 'git push'
+            def readContent2 = readFile './Firebase-Auth-app/README.md'
+            println(readContent2)
                }
 
 
