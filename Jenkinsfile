@@ -31,7 +31,7 @@ options {
          echo 'Building'
           script {
             def readContent = readFile './Firebase-Auth-app/README.md'
-            writeFile file: './Firebase-Auth-app/README.md', text: readContent+"\r\nversion := 1.0.10"
+            writeFile file: './Firebase-Auth-app/README.md', text: readContent+"\nversion := 1.0.10"
             def readContent2 = readFile './Firebase-Auth-app/README.md'
             println(readContent2)
                }
