@@ -30,55 +30,8 @@ options {
       steps {
          echo 'Building'
           script {
-
-                   writeFile(file: './Firebase-Auth-app/README.md', text: '---
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: ui-admin
-  namespace: development
-spec:
-  selector:
-    matchLabels:
-      app: ui-admin
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: ui-admin
-    spec:
-      imagePullSecrets:
-        - name: regcred
-      containers:
-        - name: ui-admin
-          image: ${file(./image.json):version}
-          resources:
-            requests:
-              cpu: 50m
-              memory: 100Mi
-            limits:
-              cpu: 100m
-              memory: 150Mi
-          ports:
-            - containerPort: 80
-      #     envFrom:
-      #       - configMapRef:
-      #           name: ui-admin-config
-      #       - secretRef:
-      #           name: ui-admin-secret
-      #     volumeMounts:
-      #       - name: ui-admin-env
-      #         mountPath: /usr/share/nginx/html/config
-      #       - name: ui-admin-secrets
-      #         mountPath: /usr/share/nginx/html/secret
-      # volumes:
-      #   - name: ui-admin-env
-      #     configMap:
-      #       name: ui-admin-config
-      #   - name: ui-admin-secrets
-      #     secret:
-      #       secretName: ui-admin-secret
-')
+            def readContent = readFile './Firebase-Auth-app/README.md'
+            writeFile file: 'Firebase-Auth-app/README.md', text: readContent+"\r\nversion := 1.0.10"
                    sh 'cd Firebase-Auth-app && git add .'
                    sh "git commit -m 'updated from jenkins'"
                    sh 'git push'
